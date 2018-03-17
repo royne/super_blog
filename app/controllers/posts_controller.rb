@@ -33,6 +33,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to root_path, notice: "El post se ha eliminado"
+  end
+
   private
     def posts_params
       params.require(:post).permit(:title, :body)
