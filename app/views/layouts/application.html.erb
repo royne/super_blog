@@ -29,7 +29,13 @@
         <div class="justify-content-between">
           <ul class="navbar-nav mr-auto">
             <li class="navbar-nav nav-item">
-              <a class="nav-link" href="#">xxxx</a>
+              <% if signed_in? %>
+                <strong><%= current_user.name %></strong>
+                <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              <% else %>
+                <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
+                <%= link_to "Registrarce", new_user_registration_path, class: "nav-link" %>
+              <% end %>
             </li>
           </ul>
         </div>
