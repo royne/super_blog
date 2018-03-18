@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/:id', to: 'profiles#show'
 
   resources :posts
+  resources :comments
 
   devise_for :users
 
