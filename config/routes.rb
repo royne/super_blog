@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   get 'profiles/show'
   get '/:id', to: 'profiles#show'
 
-  resources :posts
-  resources :comments
-
   devise_for :users
+
+  resources :posts do
+    resources :comments, only: [:create]    
+  end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
