@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(posts_params)
+    @post.user = current_user
+    
     if @post.save
       redirect_to root_path, notice: "El post fue creado con exito"
     else
