@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row justify-content-start">
     <div class="col-sm-8">
-      <% @user.posts.each do |post| %>
+      <% @user.posts.order(created_at: :desc).each do |post| %>
       <div class="card">
           <div class="card-header"><strong><%= post.title %></strong></div>
           <div class="card-body">
