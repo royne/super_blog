@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-10">
+      <p><%= link_to '<i class="material-icons">reply_all</i> Volver'.html_safe, root_path %></p> 
       <h1><%= @post.title %></h1>
       <p><%= @post.body %></p>
       <% if signed_in? && @post.user == current_user %>
