@@ -29,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="navbar-nav nav-item">
               <% if signed_in? %>
-                <%= link_to current_user.name, root_path, class: "navbar-brand" %>
+                <%= link_to current_user.name, current_user.user_name, class: "navbar-brand" %>
                 <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "nav-link" %>
               <% else %>
                 <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
@@ -42,7 +42,12 @@
     </nav>
 
     <% if flash[:notice] %>
-      <div class="alert alert-info"><%= flash[:notice] %></div>
+      <div class="alert alert-info" role="alert">
+        <%= flash[:notice] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     <% end %>
 
     <%= yield %>
