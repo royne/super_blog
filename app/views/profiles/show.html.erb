@@ -11,11 +11,12 @@
 <div class="container">
   <div class="row justify-content-start">
     <div class="col-sm-8">
-      <% @user.posts.each do |post| %>
+      <% @user.posts.order(created_at: :desc).each do |post| %>
       <div class="card">
-          <div class="card-header"><strong><%= post.title %></strong></div>
+          <div class="card-header"><strong><%= link_to post.title, post  %></strong></div>
           <div class="card-body">
             <p class="card-text"><%= post.body %></p>
+            <p class="font-italic text-secondary">Publicado <%= time_ago_in_words(post.created_at) %></p>
             <% if signed_in? && post.user == current_user %>
               <%= link_to 'Editar <i class="material-icons">create</i>'.html_safe, edit_post_path(post) %>
               <%= link_to 'Eliminar <i class="material-icons">delete_sweep</i>'.html_safe, post, method: :delete, data: { confirm: "¿Estás seguro de eliminar este post?" } %>

@@ -4,6 +4,7 @@
       <p><%= link_to '<i class="material-icons">reply_all</i> Volver'.html_safe, root_path %></p>
       <h1><%= @post.title %></h1>
       <p><%= @post.body %></p>
+      <p class="font-italic text-secondary">Publicado por <strong><%= @post.user.user_name %></strong>, <%= time_ago_in_words(@post.created_at) %></p>
       <% if signed_in? && @post.user == current_user %>
         <div class="">
           <%= link_to '<i class="material-icons">create</i>'.html_safe, edit_post_path(@post) %>
@@ -23,6 +24,7 @@
           <div class="card-header"><strong><%= comment.user.name %></strong></div>
           <div class="card-body">
             <p><%= comment.body %></p>
+            <p class="font-italic text-secondary">Publicado por <strong><%= comment.user.user_name %></strong>, <%= time_ago_in_words(comment.created_at) %></p>
           </div>
         </div>
       <% end %>
