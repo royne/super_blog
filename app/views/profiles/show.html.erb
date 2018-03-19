@@ -13,9 +13,9 @@
     <div class="col-sm-8">
       <% @user.posts.order(created_at: :desc).each do |post| %>
       <div class="card">
-          <div class="card-header"><strong><%= link_to post.title, post  %></strong></div>
+          <div class="card-header"><strong><%= link_to markdown(post.title), post  %></strong></div>
           <div class="card-body">
-            <p class="card-text"><%= post.body[0..255] %></p>
+            <p class="card-text"><%= markdown(post.body[0..255]) %></p>
             <p class="font-italic text-secondary">Publicado <%= time_ago_in_words(post.created_at) %></p>
             <% if signed_in? && post.user == current_user %>
               <%= link_to 'Editar <i class="material-icons">create</i>'.html_safe, edit_post_path(post) %>
