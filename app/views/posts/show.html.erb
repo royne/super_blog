@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <p><%= link_to '<i class="material-icons">reply_all</i> Volver'.html_safe, root_path %></p>
-      <h1><%= @post.title %></h1>
+      <h1><%= @post.title.capitalize %></h1><br>
       <p><%= @post.body %></p>
       <p class="font-italic text-secondary">Publicado por <strong><%= @post.user.user_name %></strong>, <%= time_ago_in_words(@post.created_at) %></p>
       <% if signed_in? && @post.user == current_user %>

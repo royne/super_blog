@@ -4,10 +4,10 @@
       <h1>Entradas mas recientes!</h1>
       <% @posts.each do |post| %>
         <div class="card">
-          <div class="card-header"><strong><%= post.title %></strong></div>
+          <div class="card-header"><strong><%= post.title.capitalize %></strong></div>
           <div class="card-body">
             <h4 class="card-title"><%= link_to post.title, post %></h4>
-            <p class="card-text"><%= post.body %></p>
+            <p class="card-text"><%= post.body[0..255] %></p>
             <p class="font-italic text-secondary">Publicado por <strong><%= post.user.name %></strong>, <%= time_ago_in_words(post.created_at) %></p>
             <% if signed_in? && post.user == current_user %>
               <div class="text-right">
