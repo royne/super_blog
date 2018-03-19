@@ -35,6 +35,10 @@ gem 'jquery-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
+
+gem 'redcarpet'
+gem 'coderay'
+# gemas para MARKDOWN
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
