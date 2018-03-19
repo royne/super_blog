@@ -32,7 +32,7 @@
 <!-- formulario de comentarios -->
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-8">
+    <div class="col-sm-8">      
       <% if signed_in? %>
         <h5>Nuevo Comentario</h5>
         <%= form_for [@post, @post.comments.build] do |f| %>
