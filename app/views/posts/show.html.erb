@@ -4,6 +4,11 @@
     <div class="col-sm-8">
       <p><%= link_to '<i class="material-icons">reply_all</i> Volver'.html_safe, root_path %></p>
       <div class="card card-shadow">
+        <% if @post.image.exists? %>
+        <div class="post-image">
+          <%= image_tag @post.image.url(:medium), class: "img-fluid"%>
+        </div>
+        <% end %>
         <div class="card-body">
           <h1 class="card-title"><%= markdown(@post.title.capitalize) %></h1><br>
           <p class="card-text"><%= markdown(@post.body) %></p><br>

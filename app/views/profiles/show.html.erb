@@ -11,16 +11,19 @@
 <div class="container home footer">
   <div class="row justify-content-around">
     <% @user.posts.order(created_at: :desc).each do |post| %>
-      <% if @user.posts.length == 1 %>
-        <div class="col-sm-12">
-      <% elsif @user.posts.length == 2 %>
+      <% if @user.posts.length <= 2 %>
         <div class="col-sm-6 col-md-6">
       <% else %>
         <div class="col-sm-6 col-md-4">
       <% end %>
         <div class="card card-shadow">
-          <div class="card-header"><strong><%= link_to markdown(post.title.capitalize), post  %></strong></div>
+          <% if post.image.exists? %>
+          <div class="post-image">
+            <%= image_tag post.image.url(:medium), class: "img-fluid"%>
+          </div>
+          <% end %>
           <div class="card-body">
+            <h4 class="card-title"><%= link_to markdown(post.title.capitalize), post %></h4>
             <p class="card-text"><%= markdown(post.body[0..250]) %></p>
             <p class="font-italic text-secondary">Publicado <%= time_ago_in_words(post.created_at) %></p>
             <% if signed_in? && post.user == current_user %>
